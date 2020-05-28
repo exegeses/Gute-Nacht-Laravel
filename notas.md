@@ -21,5 +21,11 @@
  
 2. Composer 
  Composer es un administrador de dependencias en PHP.
- https://getcomposer.org/
+ https://getcomposer.org/  
  https://getcomposer.org/Composer-Setup.exe
+## Recursos
+- [ ] Manual oficial de Laravel:  https://laravel.com/
+- [ ] Laracasts_  https://laracasts.com/
+- [ ] Styde https://styde.net/ 
+- [ ] Laravel News https://laravel-news.com/
+
