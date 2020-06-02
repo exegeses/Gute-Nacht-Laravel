@@ -18,7 +18,11 @@ Route::get('/', function () {
 Route::get('/saludo', function (){
     $nombre = 'Marcos';
     $numero = 3;
-    return view('saludo', [ 'nombre'=> $nombre, 'numero'=>$numero ] );
+    return view('saludo',
+            [
+                'nombre' => $nombre,
+                'numero' => $numero
+            ] );
 });
 
 
