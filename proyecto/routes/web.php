@@ -25,4 +25,5 @@ Route::get('/saludo', function (){
             ] );
 });
 
+Route::view('/test', 'vista');
 
