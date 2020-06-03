@@ -27,3 +27,13 @@ Route::get('/saludo', function (){
 
 Route::view('/test', 'vista');
 
+##retornar vista de un formulario
+Route::view('/form', 'formulario');
+// procesar dato desde el form
+Route::get('/proceso', function(){
+    //capturar dato desde el form
+    $nombre = $_GET['nombre'];
+
+    //retornar la vista que mostrar ese dato
+    return view('proceso', [ 'nombre'=>$nombre ] );
+});
