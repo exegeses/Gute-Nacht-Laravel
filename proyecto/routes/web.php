@@ -37,3 +37,10 @@ Route::get('/proceso', function(){
     //retornar la vista que mostrar ese dato
     return view('proceso', [ 'nombre'=>$nombre ] );
 });
+
+###################################
+##### consulta con raw SQL
+Route::get('/regiones', function (){
+    $regiones = DB::select('SELECT regID, regNombre FROM regiones');
+    return view('regiones', ['regiones'=>$regiones]);
+});
