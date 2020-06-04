@@ -24,6 +24,7 @@ Route::get('/regiones', function (){
 });
 
 /**
+ *  ## métodos de RAW SQL
  *   DB::select();
  *   DB::insert();
  *   DB::update();
@@ -37,4 +38,6 @@ Route::get('/adminRegiones', function (){
     $regiones = DB::table('regiones')->get();
     return view('adminRegiones', [ 'regiones'=>$regiones ] );
 });
-
+Route::get('/agregarRegion', function(){
+    return view('formAgregarRegion');
+});
