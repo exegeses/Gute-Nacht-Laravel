@@ -8,16 +8,17 @@
                     <th>Id</th>
                     <th>Región</th>
                     <th colspan="2">
-                        <a href="" class="btn btn-dark">
+                        <a href="/agregarRegion" class="btn btn-dark">
                             Agregar
                         </a>
                     </th>
                 </tr>
             </thead>
             <tbody>
+        @foreach( $regiones as $region )
                 <tr>
-                    <td>#</td>
-                    <td>region</td>
+                    <td>{{ $region->regID }}</td>
+                    <td>{{ $region->regNombre }}</td>
                     <td>
                         <a href="" class="btn btn-outline-secondary">
                             Modificar
@@ -29,6 +30,7 @@
                         </a>
                     </td>
                 </tr>
+        @endforeach
             </tbody>
         </table>
 

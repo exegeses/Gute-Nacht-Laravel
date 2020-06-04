@@ -23,8 +23,18 @@ Route::get('/regiones', function (){
     return view('regiones', ['regiones'=>$regiones]);
 });
 
+/**
+ *   DB::select();
+ *   DB::insert();
+ *   DB::update();
+ *   DB::delete();
+ */
+
 ################################
-##### CRUD de Regiones
+##### CRUD de Regiones usando Query Builder
 Route::get('/adminRegiones', function (){
-    return view('adminRegiones');
+    //$regiones = DB::select('SELECT regID, regNombre FROM regiones');
+    $regiones = DB::table('regiones')->get();
+    return view('adminRegiones', [ 'regiones'=>$regiones ] );
 });
+
