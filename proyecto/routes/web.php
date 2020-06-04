@@ -41,3 +41,15 @@ Route::get('/adminRegiones', function (){
 Route::get('/agregarRegion', function(){
     return view('formAgregarRegion');
 });
+Route::post('/agregarRegion', function(){
+    $regNombre = $_POST['regNombre'];
+   /*
+    DB::insert(
+            'INSERT INTO regiones
+                VALUES ( :regNombre ),
+                        [ $regNombre ]'
+        );
+   */
+    DB::table('regiones')->insert( [ 'regNombre'=>$regNombre ] );
+    return view('??');
+});

@@ -4,6 +4,7 @@
 
         <div class="alert bg-light p-3 col-8 mx-auto">
             <form action="/agregarRegion" method="post">
+                @csrf
                 Region: <br>
                 <input type="text" name="regNombre" class="form-control">
                 <br>
