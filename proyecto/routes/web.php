@@ -51,5 +51,7 @@ Route::post('/agregarRegion', function(){
         );
    */
     DB::table('regiones')->insert( [ 'regNombre'=>$regNombre ] );
-    return view('??');
+
+    return redirect('/adminRegiones')
+           ->with('mensaje', 'Región '.$regNombre.' agregada correctamente');
 });
