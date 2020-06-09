@@ -70,3 +70,17 @@ Route::get('/modificarRegion/{regID}', function($regID){
     // que debe tener los datos ya cargados
     return view('formModificarRegion', [ 'region'=>$region ]);
 });
+Route::post('/modificarRegion', function(){
+    $regNombre = $_POST['regNombre'];
+    $regID = $_POST['regID'];
+    /**
+    DB::update('UPDATE regiones
+                    SET regNombre = '.$regNombre. '
+                WHERE regID = '.$regID);
+    */
+    DB::table('regiones')
+        ->where('regID', $regID)
+        ->update( [ 'regNombre'=>$regNombre ] );
+    return redirect('/adminRegiones')
+            ->with('mensaje', 'Región '.$regNombre.' modificada correctamente.');
+});
