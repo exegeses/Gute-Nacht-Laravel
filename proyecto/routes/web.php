@@ -66,8 +66,7 @@ Route::get('/modificarRegion/{regID}', function($regID){
     $region = DB::table('regiones')
                 ->where('regID', $regID)
                 ->first();
-    dd($region);
     //retornar la vista del formulario
     // que debe tener los datos ya cargados
-
+    return view('formModificarRegion', [ 'region'=>$region ]);
 });
