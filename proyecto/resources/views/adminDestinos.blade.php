@@ -18,19 +18,19 @@
             <th>Precio</th>
             <th>Región</th>
             <th colspan="2">
-                <a href="/formAgregarDestino" class="btn btn-secondary">
+                <a href="/formAgregarDestino" class="btn btn-dark">
                     Agregar
                 </a>
             </th>
         </tr>
         </thead>
         <tbody>
-
+    @foreach( $destinos as $destino )
         <tr>
-            <td>destID</td>
-            <td>destNombre</td>
-            <td>destPrecio</td>
-            <td>regNombre</td>
+            <td>{{ $destino->destID }}</td>
+            <td>{{ $destino->destNombre }}</td>
+            <td>{{ $destino->destPrecio }}</td>
+            <td>{{ $destino->regNombre }}</td>
             <td>
                 <a href="/formModificarDestino" class="btn btn-outline-secondary">
                     Modificar
@@ -42,6 +42,7 @@
                 </a>
             </td>
         </tr>
+    @endforeach
 
         </tbody>
     </table>

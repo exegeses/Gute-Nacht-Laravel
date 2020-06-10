@@ -88,6 +88,21 @@ Route::post('/modificarRegion', function(){
 ################################
 ##### CRUD de Destinos usando Query Builder
 Route::get('/adminDestinos', function(){
+    //obtener datos de los destinos
 
-    return view('adminDestinos');
+    /*
+    $destinos = DB::select(
+                'SELECT
+                        destID, destNombre, destPrecio,
+                        d.regID, regNombre
+                    FROM destinos d, regiones r
+                 WHERE d.regID = r.regID'
+                );
+    */
+    $destinos = DB::table('destinos as d')
+                    ->join('regiones as r', 'd.regID', '=', 'r.regID')
+                    ->get();
+
+    //retornar la vista con los datos
+    return view('adminDestinos', [ 'destinos'=>$destinos ]);
 });
