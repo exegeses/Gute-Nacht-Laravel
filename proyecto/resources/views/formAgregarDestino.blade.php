@@ -3,6 +3,7 @@
 
         <h1>Alta de un nuevo destino</h1>
 
+        <div class="alert bg-light p-3 col-8 mx-auto">
         <form action="/agregarDestino" method="post">
             @csrf
 
@@ -12,6 +13,9 @@
             Región: <br>
             <select name="regID" class="form-control" required>
                 <option value="">Seleccione una Región</option>
+        @foreach( $regiones as $region )
+                <option value="{{ $region->regID }}">{{ $region->regNombre }}</option>
+        @endforeach
             </select>
             <br>
             Precio: <br>
@@ -27,6 +31,6 @@
             <br>
             <input type="submit" value="Agregar destino" class="btn btn-dark">
         </form>
-
+        </div>
     @endsection
 

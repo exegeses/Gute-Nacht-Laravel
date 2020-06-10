@@ -107,6 +107,6 @@ Route::get('/adminDestinos', function(){
     return view('adminDestinos', [ 'destinos'=>$destinos ]);
 });
 Route::get('/agregarDestino', function(){
-
-    return view('formAgregarDestino');
+    $regiones = DB::table('regiones')->get();
+    return view('formAgregarDestino', [ 'regiones'=>$regiones ]);
 });
