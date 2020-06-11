@@ -96,7 +96,7 @@ Route::get('/adminDestinos', function(){
                         destID, destNombre, destPrecio,
                         d.regID, regNombre
                     FROM destinos d, regiones r
-                 WHERE d.regID = r.regID'
+                    WHERE d.regID = r.regID'
                 );
     */
     $destinos = DB::table('destinos as d')
@@ -108,5 +108,20 @@ Route::get('/adminDestinos', function(){
 });
 Route::get('/agregarDestino', function(){
     $regiones = DB::table('regiones')->get();
-    return view('formAgregarDestino', [ 'regiones'=>$regiones ]);
+    return view('formAgregarDestino', [ 'regiones'=>$regiones ] );
+});
+Route::post('/agregarDestino', function(){
+    $destNombre = $_POST['destNombre'];
+    DB::table('destinos')
+            ->insert(
+                [
+                    'destNombre' => $_POST['destNombre'],
+                    'destPrecio' => $_POST['destPrecio'],
+                    'regID' => $_POST['regID'],
+                    'destAsientos' => $_POST['destAsientos'],
+                    'destDisponibles' => $_POST['destDisponibes']
+                ]
+            );
+    return redirect('/adminDestinos')
+                ->with('mensaje', 'Destino: '.$destNombre.' agregado corectamente');
 });
