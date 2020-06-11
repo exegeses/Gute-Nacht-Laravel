@@ -125,3 +125,19 @@ Route::post('/agregarDestino', function(){
     return redirect('/adminDestinos')
                 ->with('mensaje', 'Destino: '.$destNombre.' agregado corectamente');
 });
+Route::get('/modificarDestino/{destID}', function($destID){
+    //obtenemos datos del destino por su id
+    $destino = DB::table('destinos as d')
+                    ->where('destID', $destID)
+                    ->join( 'regiones as r', 'd.regID', '=', 'r.regID' )
+                    ->first();
+    //obtener el listado de regiones para el combo
+    $regiones = DB::table('regiones')->get();
+    //retornamos vista del form para que muestre los datos cargados
+    return view('formModificarDestino',
+                [
+                    'destino'=>$destino,
+                    'regiones'=>$regiones
+                ]
+    );
+});

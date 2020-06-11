@@ -32,12 +32,12 @@
             <td>{{ $destino->destPrecio }}</td>
             <td>{{ $destino->regNombre }}</td>
             <td>
-                <a href="/formModificarDestino" class="btn btn-outline-secondary">
+                <a href="/modificarDestino/{{ $destino->destID }}" class="btn btn-outline-secondary">
                     Modificar
                 </a>
             </td>
             <td>
-                <a href="/formEliminarDestino" class="btn btn-outline-secondary">
+                <a href="/eliminarDestino" class="btn btn-outline-secondary">
                     Eliminar
                 </a>
             </td>
