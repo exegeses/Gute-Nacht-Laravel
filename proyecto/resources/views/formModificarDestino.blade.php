@@ -27,8 +27,8 @@
             Asientos Disponibles: <br>
             <input type="number" value="{{ $destino->destDisponibles }}" name="destDisponibles" class="form-control" required>
             <br>
-
             <br>
+            <input type="hidden" value="{{ $destino->destID }}" name="destID">
             <input type="submit" value="Modificar destino" class="btn btn-dark">
             <a href="/adminDestinos" class="btn btn-outline-secondary">
                 volver a panel
