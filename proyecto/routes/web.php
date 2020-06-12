@@ -152,7 +152,7 @@ Route::post('/modificarDestino', function(){
                     'destPrecio' => $_POST['destPrecio'],
                     'regID' => $_POST['regID'],
                     'destAsientos' => $_POST['destAsientos'],
-                    'destDisponibles' => $_POST['destDisponibes']
+                    'destDisponibles' => $_POST['destDisponibles']
                 ]
             );
     return redirect('/adminDestinos')
