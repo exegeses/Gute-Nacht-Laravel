@@ -84,6 +84,21 @@ Route::post('/modificarRegion', function(){
     return redirect('/adminRegiones')
             ->with('mensaje', 'Región '.$regNombre.' modificada correctamente.');
 });
+Route::get('/eliminarRegion/{regID}', function($regID){
+    $region = DB::table('regiones')
+                    ->where('regID', $regID)
+                        ->first();
+    return view('formEliminarRegion', ['region'=>$region]);
+});
+Route::post('/eliminarRegion', function(){
+    $regID = $_POST['regID'];
+    DB::table('regiones')
+            ->where('regID', $regID)
+            ->delete();
+    return redirect('/adminRegiones')
+        ->with('mensaje', 'Región eliminada correctamente.');
+
+});
 
 ################################
 ##### CRUD de Destinos usando Query Builder
@@ -158,3 +173,4 @@ Route::post('/modificarDestino', function(){
     return redirect('/adminDestinos')
         ->with('mensaje', 'Destino: '.$destNombre.' modificado corectamente');
 });
+
