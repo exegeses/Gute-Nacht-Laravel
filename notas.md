@@ -60,5 +60,19 @@
 >preferntemente. Sino, descargar los archivos de manera tradicional.  
 
 > Cuando se descarga de esta modo, NO DESCARGA TODO EL PROPYECTO.  
-> NO descarga por ejemplo el directorio Vendor
+> NO descarga por ejemplo el directorio "vendor" 
 
+> El comando para clonar todo un proyecto desde git es: 
+
+    git clone direccion
+        
+> Ejemplo  
+
+    git clone https://github.com/exegeses/Gute-Nacht-Laravel.git  
+  
+> Una vez descargado, vamos a obtener los componetes necesorios para que funcione el framework
+> El comando necesario es "composer update" en el proyecto.  
+
+    cd catalogo  
+    composer update  
+    
