@@ -70,9 +70,18 @@
 
     git clone https://github.com/exegeses/Gute-Nacht-Laravel.git  
   
-> Una vez descargado, vamos a obtener los componetes necesorios para que funcione el framework
+> Una vez descargado, vamos a obtener los componetes necesorios para que funcione el framework  
 > El comando necesario es "composer update" en el proyecto.  
 
     cd catalogo  
     composer update  
+    
+> Cuando haya terminado de descargar y querramos inicialr el proyecto, va a parecer que esta todo funcionando bien, pero aun falta algo.  
+> Al intenter editar el archivo de configuración  ".env" nos damos cuenta que no está- sin ambargo, hay un archivo. ".env.example"  
+> Entonces vamos a generar nuetro archivo ".env" renombrando o compiando este archivo.  
+
+> Ahora si, el último paso es genear la key del proyectol.  
+> Esto se logra con el comando   
+
+    php artisan key:generate  
     
