@@ -43,5 +43,6 @@
             </tbody>
         </table>
 
+        {{ $marcas->links() }}
 
     @endsection
