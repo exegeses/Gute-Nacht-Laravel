@@ -14,3 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+## Route::metodo('peticion', 'controlador@accion');
+
+#####################################
+####### CRUD Categorias
+Route::get('/adminCategorias', 'CategoriaController@index');
+
+#####################################
+####### CRUD Marcas
+Route::get('/adminMarcas', 'MarcaController@index');
