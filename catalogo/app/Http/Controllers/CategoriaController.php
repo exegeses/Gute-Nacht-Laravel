@@ -39,7 +39,16 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //$request->input('catNombre')
+        //validación método validate()
+        $request->validate(
+                        [
+                            'catNombre'=>'required|min:3|max:50'
+                        ]
+                    );
+
+        //guardar en base
+        return 'validacion ok';
     }
 
     /**
