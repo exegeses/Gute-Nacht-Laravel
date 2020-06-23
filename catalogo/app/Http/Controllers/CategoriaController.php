@@ -15,7 +15,7 @@ class CategoriaController extends Controller
     public function index()
     {
         //obtenemos listado de categorias
-        $categorias = Categoria::all();
+        $categorias = Categoria::paginate(7);
 
         //retornamos la vista adminCategorias
         return view('adminCategorias', [ 'categorias'=>$categorias ]);
@@ -39,7 +39,7 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //$request->input('catNombre')
+        $catNombre = $request->input('catNombre');
         //validación método validate()
         $request->validate(
                         [
@@ -48,7 +48,14 @@ class CategoriaController extends Controller
                     );
 
         //guardar en base
-        return 'validacion ok';
+        $Categoria = new Categoria;
+        $Categoria->catNombre = $catNombre;
+        $Categoria->save();
+
+        //redirección + mensaje
+        return redirect('/adminCategorias')
+                    ->with('mensaje', 'Categoría: '.$catNombre. 'agregada correctamente.');
+
     }
 
     /**

@@ -4,14 +4,16 @@
 
         <h1>Alta de una nueva categoría</h1>
 
-        <div class="alert bg-light col-8 p-3 mx-auto">
+        <div class="alert bg-light border col-8 p-3 mx-auto">
             <form action="/agregarCategoria" method="post">
                 @csrf
                 Categoría: <br>
-                <input type="text" name="catNombre" class="form-control">
+                <input type="text" name="catNombre"
+                       class="form-control {{ $errors->has('catNombre')?'is-invalid':'' }}">
+
 
             @if (  $errors->has('catNombre') )
-                <span class="text-danger display-6">
+                <span class="invalid-feedback">
                     Complete el campo "Categoría"
                 </span>
             @endif
