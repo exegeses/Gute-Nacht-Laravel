@@ -77,7 +77,10 @@ class CategoriaController extends Controller
      */
     public function edit($id)
     {
-        //
+        //obtener una categoría filtrada por su id
+        $categoria = Categoria::find($id);
+        //retornar a la vista del formulario con los datos para modificar
+        return view('formModificarCategoria');
     }
 
     /**
