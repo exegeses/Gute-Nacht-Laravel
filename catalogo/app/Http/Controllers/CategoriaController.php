@@ -54,7 +54,7 @@ class CategoriaController extends Controller
 
         //redirección + mensaje
         return redirect('/adminCategorias')
-                    ->with('mensaje', 'Categoría: '.$catNombre. 'agregada correctamente.');
+                    ->with('mensaje', 'Categoría: '.$catNombre. ' agregada correctamente.');
 
     }
 
