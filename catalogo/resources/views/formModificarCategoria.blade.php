@@ -7,10 +7,19 @@
         <div class="alert bg-light border col-8 p-3 mx-auto">
             <form action="/modificarCategoria" method="post">
                 @csrf
+                @method('put')
                 Categoría: <br>
-                <input type="text" name="catNombre" class="form-control">
-
+                <input type="text"
+                       value="{{ $categoria->catNombre }}"
+                       name="catNombre"
+                       class="form-control {{ $errors->has('catNombre')?'is-invalid':'' }} ">
+                @if( $errors->has('catNombre') )
+                    <span class="invalid-feedback">
+                        Complete al campo "Categoría".
+                    </span>
+                @endif
                 <br>
+                <input type="hidden" value="{{ $categoria->idCategoria }}" name="idCategoria">
                 <button class="btn btn-dark mr-3">
                     Modificar categoría
                 </button>
@@ -19,5 +28,6 @@
                 </a>
             </form>
         </div>
+
 
     @endsection

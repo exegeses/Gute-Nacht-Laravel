@@ -43,7 +43,7 @@ class CategoriaController extends Controller
         //validación método validate()
         $request->validate(
                         [
-                            'catNombre'=>'required|min:3|max:50'
+                            'catNombre'=>'required|min:2|max:50'
                         ]
                     );
 
@@ -80,7 +80,7 @@ class CategoriaController extends Controller
         //obtener una categoría filtrada por su id
         $categoria = Categoria::find($id);
         //retornar a la vista del formulario con los datos para modificar
-        return view('formModificarCategoria');
+        return view('formModificarCategoria', [ 'categoria'=>$categoria ]);
     }
 
     /**
@@ -90,9 +90,20 @@ class CategoriaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        //validación
+        $request->validate(
+                        [
+                            'catNombre'=>'required|min:2|max:50'
+                        ]
+                    );
+        //obtener datos de una categoría por su id
+
+        //modificar
+
+        //redirección con mensaje
+        return 'pasó la validación';
     }
 
     /**

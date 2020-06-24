@@ -23,6 +23,7 @@ Route::get('/adminCategorias', 'CategoriaController@index');
 Route::get('/agregarCategoria', 'CategoriaController@create');
 Route::post('/agregarCategoria', 'CategoriaController@store');
 Route::get('/modificarCategoria/{id}', 'CategoriaController@edit');
+Route::put('/modificarCategoria', 'CategoriaController@update');
 
 
 #####################################
