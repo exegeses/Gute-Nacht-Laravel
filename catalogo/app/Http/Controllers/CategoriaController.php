@@ -92,6 +92,7 @@ class CategoriaController extends Controller
      */
     public function update(Request $request)
     {
+        $catNombre = $request->input('catNombre');
         //validación
         $request->validate(
                         [
@@ -99,11 +100,13 @@ class CategoriaController extends Controller
                         ]
                     );
         //obtener datos de una categoría por su id
-
+        $Categoria = Categoria::find( $request->input('idCategoria') );
         //modificar
-
-        //redirección con mensaje
-        return 'pasó la validación';
+        $Categoria->catNombre = $catNombre;
+        $Categoria->save();
+        //redirección + mensaje
+        return redirect('/adminCategorias')
+            ->with('mensaje', 'Categoría: '.$catNombre. ' modificada correctamente.');
     }
 
     /**
