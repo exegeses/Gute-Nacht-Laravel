@@ -25,7 +25,6 @@ Route::post('/agregarCategoria', 'CategoriaController@store');
 Route::get('/modificarCategoria/{id}', 'CategoriaController@edit');
 Route::put('/modificarCategoria', 'CategoriaController@update');
 
-
 #####################################
 ####### CRUD Marcas
 Route::get('/adminMarcas', 'MarcaController@index');
@@ -33,3 +32,4 @@ Route::get('/adminMarcas', 'MarcaController@index');
 #####################################
 ####### CRUD Productos
 Route::get('/adminProductos','ProductoController@index');
+Route::get('/agregarProducto', 'ProductoController@create');
