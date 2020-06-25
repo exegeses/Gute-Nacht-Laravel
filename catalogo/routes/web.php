@@ -24,7 +24,8 @@ Route::get('/agregarCategoria', 'CategoriaController@create');
 Route::post('/agregarCategoria', 'CategoriaController@store');
 Route::get('/modificarCategoria/{id}', 'CategoriaController@edit');
 Route::put('/modificarCategoria', 'CategoriaController@update');
-
+Route::get('/eliminarCategoria/{id}', 'CategoriaController@borrar');
+Route::delete('/eliminarCategoria', 'CategoriaController@destroy');
 #####################################
 ####### CRUD Marcas
 Route::get('/adminMarcas', 'MarcaController@index');
@@ -35,3 +36,6 @@ Route::put('/modificarMarca', 'MarcaController@update');
 ####### CRUD Productos
 Route::get('/adminProductos','ProductoController@index');
 Route::get('/agregarProducto', 'ProductoController@create');
+Route::post('/agregarProducto', 'ProductoController@store');
+
+

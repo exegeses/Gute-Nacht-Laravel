@@ -110,13 +110,31 @@ class CategoriaController extends Controller
     }
 
     /**
+     * Confirmación de baja de una categoría
+     *
+     * @param int id
+     * @return \Illuminate\Http\Response
+     */
+    public function borrar($id)
+    {
+        //obtener datos de una categoría
+        $Categoria = Categoria::find($id);
+        //retornar la vista para confirmar
+        return view('confirmarBajaCategoría', [ 'categoria'=>$Categoria ] );
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $Categoria = Categoria::find($request->input('idCategoria'));
+        $catNombre = $Categoria->catNombre;
+        $Categoria->delete();
+        return view('adminCategorias')
+                ->with('mensaje', 'Categoría: '.$catNombre.' eliminada correctamente');
     }
 }
