@@ -28,6 +28,8 @@ Route::put('/modificarCategoria', 'CategoriaController@update');
 #####################################
 ####### CRUD Marcas
 Route::get('/adminMarcas', 'MarcaController@index');
+Route::get('/modificarMarca/{id}', 'MarcaController@edit');
+Route::put('/modificarMarca', 'MarcaController@update');
 
 #####################################
 ####### CRUD Productos

@@ -59,7 +59,10 @@ class MarcaController extends Controller
      */
     public function edit($id)
     {
-        //
+        //obtener una marca por su id
+        $Marca = Marca::find($id);
+        return view('formModificarMarca', [ 'marca'=>$Marca ]);
+
     }
 
     /**
@@ -69,9 +72,15 @@ class MarcaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        //validacion
+        $request->validate(
+                [
+                    'mkNombre'=>'required|min:2|max:50'
+                ]
+        );
+        return 'validacion ok';
     }
 
     /**
