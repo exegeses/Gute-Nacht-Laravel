@@ -46,6 +46,9 @@ class ProductoController extends Controller
         $prdImagen = 'noDisponible.jpg';
 
         //si no enviaron nada en MODIFICAR
+        if( $request->has('imagenActual') ){
+            $prdImagen = $request->input('imagenActual');
+        }
 
         //si enviaron archivo
         if( $request->file('prdImagen') ){
@@ -60,6 +63,35 @@ class ProductoController extends Controller
         return $prdImagen;
     }
 
+    public function validar(Request $request)
+    {
+        $request->validate(
+            [
+                'prdNombre'=>'required|min:3|max:70',
+                'prdPrecio'=>'required|numeric|min:0',
+                'prdPresentacion'=>'required|min:3|max:150',
+                'prdStock'=>'required|integer|min:1',
+                'prdImagen'=>'mimes:jpg,jpeg,png,gif,svg,webp|max:2048'
+            ],
+            [
+                'prdNombre.required'=>'Complete el campo Nombre',
+                'prdNombre.min'=>'Complete el campo Nombre con al menos 3 caractéres',
+                'prdNombre.max'=>'Complete el campo Nombre con 70 caractéres como máxino',
+                'prdPrecio.required'=>'Complete el campo Precio',
+                'prdPrecio.numeric'=>'Complete el campo Precio con un número',
+                'prdPrecio.min'=>'Complete el campo Precio con un número positivo',
+                'prdPresentacion.required'=>'Complete el campo Presentación',
+                'prdPresentacion.min'=>'Complete el campo Presentación con al menos 3 caractéres',
+                'prdPresentacion.max'=>'Complete el campo Presentación con 150 caractérescomo máxino',
+                'prdStock.required'=>'Complete el campo Stock',
+                'prdStock.integer'=>'Complete el campo Stock con un número entero',
+                'prdStock.min'=>'Complete el campo Stock con un número positivo',
+                'prdImagen.mimes'=>'Debe ser una imagen',
+                'prdImagen.max'=>'Debe ser una imagen de 2MB como máximo'
+            ]
+        );
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -69,31 +101,7 @@ class ProductoController extends Controller
     public function store(Request $request)
     {
         //validacion
-        $request->validate(
-                    [
-                        'prdNombre'=>'required|min:5|max:70',
-                        'prdPrecio'=>'required|numeric|min:0',
-                        'prdPresentacion'=>'required|min:3|max:150',
-                        'prdStock'=>'required|integer|min:1',
-                        'prdImagen'=>'mimes:jpg,jpeg,png,gif,svg,webp|max:2048'
-                    ],
-                    [
-                        'prdNombre.required'=>'Complete el campo Nombre',
-                        'prdNombre.min'=>'Complete el campo Nombre con al menos 5 caractéres',
-                        'prdNombre.max'=>'Complete el campo Nombre con 70 caractéres como máxino',
-                        'prdPrecio.required'=>'Complete el campo Precio',
-                        'prdPrecio.numeric'=>'Complete el campo Precio con un número',
-                        'prdPrecio.min'=>'Complete el campo Precio con un número positivo',
-                        'prdPresentacion.required'=>'Complete el campo Presentación',
-                        'prdPresentacion.min'=>'Complete el campo Presentación con al menos 3 caractéres',
-                        'prdPresentacion.max'=>'Complete el campo Presentación con 150 caractérescomo máxino',
-                        'prdStock.required'=>'Complete el campo Stock',
-                        'prdStock.integer'=>'Complete el campo Stock con un número entero',
-                        'prdStock.min'=>'Complete el campo Stock con un número positivo',
-                        'prdImagen.mimes'=>'Debe ser una imagen',
-                        'prdImagen.max'=>'Debe ser una imagen de 2MB como máximo'
-                    ]
-                );
+        $this->validar($request);
         //subir imagen (*)
         $prdImagen = $this->subirImagen( $request );
         //instanciar
@@ -153,9 +161,27 @@ class ProductoController extends Controller
      * @param  \App\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Producto $producto)
+    public function update(Request $request)
     {
-        //
+        //validacion
+        $this->validar($request);
+
+        //obtener datos de un producto
+        $Producto = Producto::find( $request->input('idProducto') );
+        //asignar valores
+        $Producto->prdNombre = $request->input('prdNombre');
+        $Producto->prdPrecio = $request->input('prdPrecio');
+        $Producto->idMarca = $request->input('idMarca');
+        $Producto->idCategoria = $request->input('idCategoria');
+        $Producto->prdPresentacion = $request->input('prdPresentacion');
+        $Producto->prdStock = $request->input('prdStock');
+            # subir imagen *
+        $Producto->prdImagen = $this->subirImagen($request);
+        //grabar
+        $Producto->save();
+        //redirigir con mensaje de ok
+        return redirect('/adminProductos')
+                ->with('mensaje', 'Producto: '.$request->input('prdNombre').' modificado correctamente');
     }
 
     /**
