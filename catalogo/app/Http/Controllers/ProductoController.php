@@ -42,8 +42,10 @@ class ProductoController extends Controller
 
     public function subirImagen(Request $request)
     {
-        //si no enviaron archivo
+        //si no enviaron archivo en AGREGAR
         $prdImagen = 'noDisponible.jpg';
+
+        //si no enviaron nada en MODIFICAR
 
         //si enviaron archivo
         if( $request->file('prdImagen') ){

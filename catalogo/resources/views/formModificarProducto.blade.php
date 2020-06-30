@@ -55,6 +55,7 @@
                 <br>
                 <input type="file" name="prdImagen" class="form-control">
                 <br>
+                <input type="hidden" value="{{ $producto->prdImagen }}" name="imagenActual">
                 <input type="hidden" value="{{ $producto->idProducto }}" name="idProducto">
                 <input type="submit" value="Modificar producto" class="btn btn-secondary mb-3">
                 <a href="/adminProductos" class="btn btn-light mb-3">Volver al panel de Productos</a>
